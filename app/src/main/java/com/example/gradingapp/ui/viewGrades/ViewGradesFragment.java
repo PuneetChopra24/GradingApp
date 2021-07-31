@@ -1,4 +1,4 @@
-package com.example.gradingapp.ui.home;
+package com.example.gradingapp.ui.viewGrades;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,26 +10,27 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.gradingapp.R;
-import com.example.gradingapp.databinding.FragmentHomeBinding;
+import com.example.gradingapp.databinding.FragmentViewGradesBinding;
+import com.example.gradingapp.ui.viewGrades.ViewGradesViewModel;
 
-public class HomeFragment extends Fragment {
+public class ViewGradesFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private ViewGradesViewModel viewGradesViewModel;
+    private FragmentViewGradesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        viewGradesViewModel =
+                new ViewModelProvider(this).get(ViewGradesViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentViewGradesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        final TextView textView = binding.textViewGrades;
+        viewGradesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

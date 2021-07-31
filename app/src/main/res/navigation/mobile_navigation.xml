@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_search">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.gradingapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_search"
+        android:name="com.example.gradingapp.ui.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.gradingapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_viewGrades"
+        android:name="com.example.gradingapp.ui.viewGrades.ViewGradesFragment"
+        android:label="@string/menu_viewGrades"
+        tools:layout="@layout/fragment_View_grades" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.gradingapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_gradeEntry"
+        android:name="com.example.gradingapp.ui.gradeEntry.GradeEntryFragment"
+        android:label="@string/menu_gradeEntry"
+        tools:layout="@layout/fragment_grade_entry" />
 </navigation>
