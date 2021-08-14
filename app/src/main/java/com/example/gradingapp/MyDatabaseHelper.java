@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -30,8 +31,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
-               COLUMN_NAME + " TEXT, " + COLUMN_PROG_CODE + " TEXT, " + COLUMN_GRADE + " TEXT, " +
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
+               COLUMN_NAME + " TEXT, " + COLUMN_PROG_CODE + " VARCHAR, " + COLUMN_GRADE + " TEXT, " +
                 COLUMN_DURATION + " TEXT, " + COLUMN_FEES + " INTEGER);";
         db.execSQL(query);
     }
@@ -62,6 +63,29 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor readData(){
         String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public Cursor readDataWithId(int id){
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE _id = "+ id;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public Cursor readDataWithProgram(String program){
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE program_code = '"+ program +"'";
+        Log.d("QUERY ", query);
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;

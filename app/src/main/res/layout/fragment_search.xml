@@ -4,33 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.search.SearchFragment"
+    android:background="@color/black">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="110dp"
-        android:layout_height="31dp"
+    <EditText
+        android:id="@+id/enterId"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="44dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Enter id"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findby" />
+
+    <ListView
+        android:id="@+id/subject"
+        android:layout_width="115dp"
+        android:layout_height="166dp"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="84dp" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
 
     <RadioGroup
-        android:layout_width="210dp"
-        android:layout_height="103dp"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="81dp" >
+        android:id="@+id/findby"
+        android:layout_width="220dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/lookById"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Search by Id"
+            android:textSize="20sp" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/lookByProgram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Search by program"
+            android:textSize="20sp" />
     </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="412dp"
+        android:layout_height="417dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subject" />
+
+    <Button
+        android:id="@+id/findButton"
+        android:layout_width="88dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="179dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="179dp"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:icon="@android:drawable/ic_menu_search"
+        app:iconSize="@android:dimen/app_icon_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycleView"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
